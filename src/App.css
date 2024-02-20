@@ -13,6 +13,10 @@
   }
 }
 
+body {
+  background-color: #d6dae1;
+}
+
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -25,7 +29,111 @@
 }
 
 .App-link {
-  color: #61dafb;
+  color: #fefefe;
+}
+
+.board-row {
+  display: flex;
+  justify-content: center;
+  height: 100px;
+  margin: 0px;
+}
+
+.game-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  margin-top: 5%;
+}
+
+.square {
+  background-color: #435568;
+  border-width: 5px;
+  border-color: #435568;
+  border-radius: 10px;
+  position: relative;
+  height: 100px;
+  width: 100px;
+  margin: 0px;
+  padding: 0%;
+  font-size:50px ;
+  color: #FFF;
+  font-family: 'Arial Black';
+}
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  flex-direction: column;
+  background-color: rgba(0, 0, 0, 0.8); /* semi-transparent black background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999; /* Ensure the overlay appears on top of other content */
+}
+
+a {
+  color: #FFF;
+}
+
+.win-text {
+  font-size: 100px;
+  font-weight: bold;
+  color: rgb(0, 255, 0); /* or any color you prefer */
+  text-align: center;
+}
+
+.draw-text {
+  color: yellow;
+}
+
+.continue {
+  text-align: center;
+  color: #FFF;
+}
+.status {
+  color: #000000;
+}
+
+.snake-game {
+  text-align: center;
+  display: flex;
+  flex-direction: column; /* Align children in a column */
+  align-items: center; /* Center items horizontally */
+}
+
+.snake-game .game-board {
+  display: inline-block;
+  border: 3px solid #372c2c;
+  border-radius: 30px;
+}
+
+.snake-game .board-row {
+  display: flex;
+  justify-content: space-between; /* Or any other appropriate value */
+  align-items: center; /* Or any other appropriate value */
+  height: 20px; /* Set an appropriate height for your rows */
+  margin: 0; /* Remove any default margin */
+}
+
+.snake-game .board-cell {
+  width: 20px;
+  height: 20px;
+}
+
+.snake-game .snake {
+  background-color: rgb(42, 61, 156);
+}
+
+.snake-game .food {
+  background-color: rgb(213, 7, 245);
+}
+
+.snake-game .score {
+  margin-top: 10px;
 }
 
 @keyframes App-logo-spin {
