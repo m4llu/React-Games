@@ -126,14 +126,24 @@ a {
 
 .snake-game .snake {
   background-color: rgb(42, 61, 156);
+  border-radius: 30%;
 }
 
 .snake-game .food {
   background-color: rgb(213, 7, 245);
+  border-radius: 30%;
 }
 
 .snake-game .score {
   margin-top: 10px;
+}
+
+button {
+  margin: 20px;
+  border: 0;
+  border-radius: 10px;
+  height: 40px;
+  width: 100px;
 }
 
 @keyframes App-logo-spin {
