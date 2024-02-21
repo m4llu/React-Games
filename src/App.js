@@ -12,7 +12,7 @@ function App() {
       <Game />
       <SnakeGame />
       <DiceRoller />
-      <Counter />
+      <Counter initialCount={100} /> 
     </div>
   );
 }
