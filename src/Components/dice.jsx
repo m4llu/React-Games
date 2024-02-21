@@ -21,10 +21,10 @@ const DiceRoller = () => {
     <div className="dice-roller-container">
       <img
         src={diceImage}
-        alt={`Noppa näyttää ${diceNumber}`}
+        alt={`Dice number: ${diceNumber}`}
         className="dice-image"
       />
-      <button onClick={rollDice}>Heitä noppaa</button>
+      <button onClick={rollDice}>Roll Dice</button>
     </div>
   );
 };
