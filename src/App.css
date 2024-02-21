@@ -137,8 +137,9 @@ a {
 }
 
 .snake-game .game-board {
+  box-shadow: inset 0 0 10px #504f4c;
   display: inline-block;
-  border: 3px solid #372c2c;
+  border: 3px solid #63778d;
   border-radius: 30px;
 }
 
@@ -157,11 +158,13 @@ a {
 
 .snake-game .snake {
   background-color: rgb(42, 61, 156);
+  box-shadow: 1px 1px 5px #000000ce;
   border-radius: 30%;
 }
 
 .snake-game .food {
   background-color: rgb(213, 7, 245);
+  box-shadow: 1px 1px 5px #000000ce;
   border-radius: 30%;
 }
 
