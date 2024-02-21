@@ -145,11 +145,16 @@ const SnakeGame = () => {
       <h1>SNAKE GAME</h1>
       
       <div className="game-board">
+        {/* pelilaudan luonti riveittäin */}
         {Array.from({ length: boardSize }).map((_, rowIndex) => (
           <div key={rowIndex} className="board-row">
+            {/* luodaan myös sarakkeet */}
             {Array.from({ length: boardSize }).map((_, colIndex) => (
               <div
                 key={`${rowIndex}-${colIndex}`}
+                // luokka board cell edustaa yhtä pelilaudan solua
+                // jos käärmeen sijainti on tässä solussa, lisätään snake luokka
+                // jos ruoan sijainti on tässä solussa, lisätään luokka food
                 className={`board-cell ${snake.some((cell) => cell.x === colIndex && cell.y === rowIndex) ? 'snake' : ''} ${food.x === colIndex && food.y === rowIndex ? 'food' : ''}`}
               ></div>
             ))}
