@@ -17,6 +17,7 @@ body {
   background-color: #d6dae1;
 }
 
+
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -45,12 +46,13 @@ body {
   justify-content: center;
   text-align: center;
   margin-top: 5%;
+  border-radius: 25px;
 }
 
 .square {
   background-color: #435568;
   border-width: 5px;
-  border-color: #435568;
+  border-color: #3a4857;
   border-radius: 10px;
   position: relative;
   height: 100px;
@@ -83,6 +85,13 @@ a {
   font-size: 100px;
   font-weight: bold;
   color: rgb(0, 255, 0); /* or any color you prefer */
+  text-align: center;
+}
+
+.lose-text {
+  font-size: 100px;
+  font-weight: bold;
+  color: rgb(225, 27, 27); /* or any color you prefer */
   text-align: center;
 }
 

@@ -1,24 +1,29 @@
 import React, { useState, useEffect, useCallback } from 'react';
 
 const SnakeGame = () => {
-  // State for game variables
+
   const [score, setScore] = useState(0);
   const [gameOver, setGameOver] = useState(false);
   const [gameStarted, setGameStarted] = useState(false);
-
-  // Game logic variables
   const [snake, setSnake] = useState([{ x: 10, y: 10 }]);
   const [food, setFood] = useState({ x: 5, y: 5 });
   const [direction, setDirection] = useState('RIGHT');
 
-  // Game board size
+  // häviöruutu
+  const [overlayVisible, setOverlayVisible] = useState(true);
+  const handleOverlayClick = () => {
+    setOverlayVisible(false);
+  };
+
+  // "pelilaudan" koko
   const boardSize = 20;
 
-  // Game logic functions
+  // pelin logiikkafunktiot
   const startGame = () => {
-    // Reset game variables only if the game has not started yet
+    // nollataan pelin muuttujat
     if (!gameStarted) {
       setScore(0);
+      setOverlayVisible(true);
       setGameOver(false);
       setSnake([{ x: 10, y: 10 }]);
       setFood({ x: 5, y: 5 });
@@ -28,9 +33,9 @@ const SnakeGame = () => {
   };
 
   const endGame = () => {
-    // End the game logic here
+    // pelin lopetus
     setGameOver(true);
-    setGameStarted(false); // Set the gameStarted state to false
+    setGameStarted(false); 
   };
   
 
@@ -39,7 +44,7 @@ const SnakeGame = () => {
       const newSnake = [...snake];
       let newHead = { ...newSnake[0] };
 
-      // Move the snake based on the current direction
+      // liikutetaan matoa suunnan mukaan
       switch (direction) {
         case 'UP':
           newHead.y -= 1;
@@ -57,7 +62,7 @@ const SnakeGame = () => {
           break;
       }
 
-      // Check for collision with walls or itself
+      // tarkistetaan törmäys seinään tai itseensä
       if (
         newHead.x < 0 || newHead.x >= boardSize || newHead.y < 0 || newHead.y >= boardSize ||
         newSnake.slice(1).some((segment) => segment.x === newHead.x && segment.y === newHead.y)
@@ -68,7 +73,7 @@ const SnakeGame = () => {
 
       newSnake.unshift(newHead);
 
-      // Check if snake eats the food
+      // tarkistetaan syökö mato ruoan
       if (newHead.x === food.x && newHead.y === food.y) {
         setScore(score + 1);
         generateFood();
@@ -81,13 +86,13 @@ const SnakeGame = () => {
   }, [snake, direction, food, gameOver, score, gameStarted]);
 
   const generateFood = () => {
-    // Generate random coordinates for the food within the board
+    // generoidaan satunnaiset koordinaatit ruoan spawnaamiselle
     const newFood = {
       x: Math.floor(Math.random() * boardSize),
       y: Math.floor(Math.random() * boardSize),
     };
 
-    // Regenerate if food overlaps with the snake
+    // tarkistetaan osuuko ruoka matoon ja regeneroidaan jos näin on
     if (snake.some((segment) => segment.x === newFood.x && segment.y === newFood.y)) {
       generateFood();
     } else {
@@ -96,13 +101,13 @@ const SnakeGame = () => {
   };
 
   useEffect(() => {
-    // Move the snake periodically
+    // madon liikkuminen ajoittain
     const interval = setInterval(moveSnake, 100);
     return () => clearInterval(interval);
   }, [moveSnake]);
 
   const handleKeyPress = (event) => {
-    // Update direction based on arrow key presses
+    // suunnan päivittäminen nappien painalluksen mukaan
     switch (event.key) {
       case 'ArrowUp':
         event.preventDefault();
@@ -125,7 +130,7 @@ const SnakeGame = () => {
     }
   };
 
-  // Handle key press events for changing direction
+  // näppäinten painallus event listener
   useEffect(() => {
     if (gameStarted) {
       window.addEventListener('keydown', handleKeyPress);
@@ -137,7 +142,7 @@ const SnakeGame = () => {
 
   return (
     <div className="snake-game">
-      <h1>Snake Game</h1>
+      <h1>SNAKE GAME</h1>
       
       <div className="game-board">
         {Array.from({ length: boardSize }).map((_, rowIndex) => (
@@ -156,14 +161,13 @@ const SnakeGame = () => {
         <p>Score: {score}</p>
       </div>
         
-    {/* Display overlay for winning or losing */}
-        {gameStarted && gameOver ? (
-            <div className="overlay" onClick={startGame}>
-            <div className="win-text"> {gameOverMessage}</div>
-        {/* Display a message to start the next game */}
-            <div className="continue">Click anywhere to continue</div>
-            </div>
-    ) : null}
+    {/* näytetään overlay ja iso häviö teksti kun pelin häviää */}
+    {!gameStarted && gameOver && overlayVisible ? (
+        <div className="overlay" onClick={handleOverlayClick}>
+          <div className="lose-text">{gameOverMessage}</div>
+          <div className="continue">Click anywhere to continue</div>
+        </div>
+      ) : null}
     </div>
   );
 };
