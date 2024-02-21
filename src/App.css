@@ -1,3 +1,7 @@
+:root {
+  --container: #d6dae1;
+}
+
 .App {
   text-align: center;
 }
@@ -14,7 +18,7 @@
 }
 
 body {
-  background-color: #d6dae1;
+  background-color: #b2bdcf;
 }
 
 
@@ -40,13 +44,35 @@ body {
   margin: 0px;
 }
 
+/* containers */
+
+.dice-roller-container,
+.counter-container,
+.snake-game,
 .game-container {
+  margin: auto;
+  width: 35%;
+  padding: 20px;
+  background-color: var(--container);
+  border-radius: 25px;
+}
+
+.counter-container,
+.snake-game {
+  margin: 20px auto;
+}
+
+.snake-game,
+.game-container {
+  text-align: center;
   display: flex;
   flex-direction: column;
+  align-items: center;
+}
+
+.game-container {
   justify-content: center;
-  text-align: center;
   margin-top: 5%;
-  border-radius: 25px;
 }
 
 .square {
@@ -70,11 +96,11 @@ body {
   width: 100%;
   height: 100%;
   flex-direction: column;
-  background-color: rgba(0, 0, 0, 0.8); /* semi-transparent black background */
+  background-color: rgba(0, 0, 0, 0.8); 
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 999; /* Ensure the overlay appears on top of other content */
+  z-index: 999; 
 }
 
 a {
@@ -84,14 +110,14 @@ a {
 .win-text {
   font-size: 100px;
   font-weight: bold;
-  color: rgb(0, 255, 0); /* or any color you prefer */
+  color: rgb(0, 255, 0); 
   text-align: center;
 }
 
 .lose-text {
   font-size: 100px;
   font-weight: bold;
-  color: rgb(225, 27, 27); /* or any color you prefer */
+  color: rgb(225, 27, 27);
   text-align: center;
 }
 
@@ -107,12 +133,7 @@ a {
   color: #000000;
 }
 
-.snake-game {
-  text-align: center;
-  display: flex;
-  flex-direction: column; /* Align children in a column */
-  align-items: center; /* Center items horizontally */
-}
+
 
 .snake-game .game-board {
   display: inline-block;
@@ -122,10 +143,10 @@ a {
 
 .snake-game .board-row {
   display: flex;
-  justify-content: space-between; /* Or any other appropriate value */
-  align-items: center; /* Or any other appropriate value */
-  height: 20px; /* Set an appropriate height for your rows */
-  margin: 0; /* Remove any default margin */
+  justify-content: space-between; 
+  align-items: center; 
+  height: 20px; 
+  margin: 0; 
 }
 
 .snake-game .board-cell {
@@ -145,6 +166,12 @@ a {
 
 .snake-game .score {
   margin-top: 10px;
+}
+
+
+.counter-container button {
+  width: 50px;
+  margin: 5px;
 }
 
 button {
