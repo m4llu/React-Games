@@ -1,5 +1,5 @@
 :root {
-  --container: #d6dae1;
+  --container: #d6dae180;
 }
 
 .App {
@@ -44,6 +44,10 @@ body {
   margin: 0px;
 }
 
+h1 {
+  color: #435568;
+}
+
 /* containers */
 
 .dice-roller-container,
@@ -62,6 +66,7 @@ body {
   margin: 20px auto;
 }
 
+.dice-roller-container,
 .snake-game,
 .game-container {
   text-align: center;
@@ -77,9 +82,7 @@ body {
 
 .square {
   background-color: #435568;
-  border-width: 5px;
-  border-color: #3a4857;
-  border-radius: 10px;
+  border:10px double  #63778d33;
   position: relative;
   height: 100px;
   width: 100px;
@@ -132,8 +135,6 @@ a {
 .status {
   color: #000000;
 }
-
-
 
 .snake-game .game-board {
   display: inline-block;
